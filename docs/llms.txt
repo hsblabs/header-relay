@@ -8,12 +8,18 @@
 - Chrome Web Store: https://chromewebstore.google.com/detail/olmfkdclaloaacojbgaabokehlbphilf
 - Source code: https://github.com/mktbsh/webext-header-emulator
 - Privacy policy: https://hsblabs.github.io/header-relay/privacy
+- Cookie feature announcement: https://hsblabs.github.io/header-relay/cookie
+- Cookie FAQ: https://hsblabs.github.io/header-relay/cookie/faq
+- Changelog: https://hsblabs.github.io/header-relay/changelogs
 
 ## Key facts
 
 - Intended for local, staging, internal, and other controlled API testing environments.
 - Header capture and attachment apply only to enabled profiles and configured target origins.
 - Configured excluded paths remain untouched.
+- Profiles can send Fixed Cookies and track registered Cookie names from Set-Cookie responses.
+- Header Relay does not read or modify Chrome's cookie store and does not request the cookies permission.
+- Tracked Cookie values remain in the current browser session and are never written to audit logs or analytics.
 - Profiles, captured values, session state, and audit logs are not sent to the developer or an external data service.
 - Audit logs retain at most 1,000 recent entries for no longer than 7 days.
 - Logged URLs omit query strings and fragments.

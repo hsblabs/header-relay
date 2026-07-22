@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><meta name="description" content="Chrome Cookie 저장소를 변경하지 않고 고정 Cookie 전송과 등록된 Set-Cookie 값 추적을 지원합니다."><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"><meta name="google-site-verification" content="_0NV0f-CgQBzO7lDLuy6buVGiOeBhNUN0RxTGxlfb7k"><link rel="icon" href="/header-relay/icon-48.png"><link rel="canonical" href="https://hsblabs.github.io/header-relay/ko/cookie"><link rel="alternate" hreflang="en" href="https://hsblabs.github.io/header-relay/cookie"><link rel="alternate" hreflang="ja" href="https://hsblabs.github.io/header-relay/ja/cookie"><link rel="alternate" hreflang="ko" href="https://hsblabs.github.io/header-relay/ko/cookie"><link rel="alternate" hreflang="x-default" href="https://hsblabs.github.io/header-relay/cookie"><meta property="og:type" content="website"><meta property="og:site_name" content="Header Relay"><meta property="og:url" content="https://hsblabs.github.io/header-relay/ko/cookie"><meta property="og:locale" content="ko_KR"><meta property="og:locale:alternate" content="en_US"><meta property="og:locale:alternate" content="ja_JP"><meta property="og:title" content="Header Relay, 고정 및 추적 Cookie 지원 추가"><meta property="og:description" content="Chrome Cookie 저장소를 변경하지 않고 고정 Cookie 전송과 등록된 Set-Cookie 값 추적을 지원합니다."><meta property="og:image" content="https://hsblabs.github.io/header-relay/og.png"><meta property="og:image:alt" content="Header Relay — HTTP header relay for Chrome API testing"><meta property="og:image:width" content="1536"><meta property="og:image:height" content="1024"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Header Relay, 고정 및 추적 Cookie 지원 추가"><meta name="twitter:description" content="Chrome Cookie 저장소를 변경하지 않고 고정 Cookie 전송과 등록된 Set-Cookie 값 추적을 지원합니다."><meta name="twitter:image" content="https://hsblabs.github.io/header-relay/og.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Cookie 값을 수동으로 복사하지 않는 고정 및 추적 Cookie.","description":"Chrome Cookie 저장소를 변경하지 않고 고정 Cookie 전송과 등록된 Set-Cookie 값 추적을 지원합니다.","datePublished":"2026-07-22","dateModified":"2026-07-22","inLanguage":"ko","mainEntityOfPage":"https://hsblabs.github.io/header-relay/ko/cookie","author":{"@type":"Organization","name":"Header Relay"},"publisher":{"@type":"Organization","name":"Header Relay"}}</script><title>Header Relay, 고정 및 추적 Cookie 지원 추가</title><link rel="stylesheet" href="/header-relay/_astro/SiteHeader.QjxExKJ7.css"></head><body><div class="site-shell"><header class="container header"><a class="brand" href="/header-relay/ko"><img src="/header-relay/icon-48.png" alt="" width="30" height="30"><span>Header Relay</span></a><nav class="nav" aria-label="Primary navigation"><a class="nav-link" aria-current="page" href="/header-relay/ko/cookie">Cookie</a><a class="nav-link" href="/header-relay/ko/changelogs">변경 내역</a><a class="nav-link" href="/header-relay/ko/privacy">개인정보</a><div class="languages" aria-label="Language"><a class="language" href="/header-relay/cookie" hreflang="en">en</a><a class="language" href="/header-relay/ja/cookie" hreflang="ja">ja</a><a class="language" aria-current="page" href="/header-relay/ko/cookie" hreflang="ko">ko</a></div></nav></header><main><section class="docs-hero"><div class="container docs-hero-inner"><p class="eyebrow">제품 업데이트</p><h1>Cookie 값을 수동으로 복사하지 않는 고정 및 추적 Cookie.</h1><p class="lead">Header Relay는 로컬, 스테이징, 사내 환경의 API 테스트를 위해 Cookie 요청 헤더를 전용 기능으로 관리합니다.</p><p class="updated">도쿄, 2026년 7월 22일</p></div></section><article class="container article"><section><h2>요청 사이에서 Cookie 값을 복사하지 않기</h2><p>Cookie 인증 API를 테스트할 때 개발자는 Set-Cookie를 확인하고 다음 요청에 값을 옮겨 적곤 합니다. 로그인이나 세션이 갱신될 때 작업이 반복되고, 오래된 값은 테스트 결과를 잘못 해석하게 만들 수 있습니다.</p><p>새 Cookie 기능에서는 프로필마다 고정 Cookie와 추적할 Cookie 이름을 등록합니다. Header Relay는 대상 오리진의 Set-Cookie에서 등록된 값을 가져와 이후 일치하는 요청에 전송합니다.</p></section><section><h2>최종 Cookie 헤더를 하나로 결합</h2><p>고정값과 추적값은 순서가 결정된 하나의 Cookie 헤더로 결합됩니다. 같은 프로필 안에서 이름이 겹치면 고정 Cookie가 우선합니다. 여러 프로필의 이름이 다르면 결합하고, 같으면 임의로 선택하지 않고 충돌로 알립니다.</p><p>URL Probe에서 요청을 보내기 전에 일치한 프로필과 최종 Cookie 헤더를 확인할 수 있습니다. 관리 화면과 Popup에서도 현재 값을 보고 추적값을 개별 또는 프로필 단위로 지울 수 있습니다.</p></section><section><h2>Chrome Cookie 저장소와 분리</h2><p>Header Relay는 Chrome Cookie 저장소를 읽거나 변경하지 않으며 cookies 권한도 요청하지 않습니다. 관리 값이 하나 이상 적용될 때만 해당 요청의 Cookie 헤더를 교체합니다. 전송 후보가 없으면 Chrome이 만든 Cookie 헤더를 그대로 둡니다.</p><p>추적값은 현재 브라우저 세션에만 보관됩니다. 브라우저나 확장 프로그램 재시작, 프로필 비활성화, 관련 설정 변경, 권한 취소 또는 수동 삭제 시 제거됩니다.</p></section><section><h2>Cookie 테스트를 위한 세 가지 기능</h2><div class="docs-card-grid"><article class="docs-card"><h3>고정 Cookie</h3><p>활성 프로필에서 항상 전송할 Cookie 이름과 값을 설정합니다.</p></article><article class="docs-card"><h3>추적 Cookie</h3><p>Cookie 이름을 등록하고 일치하는 Set-Cookie 응답에서 세션 값을 갱신합니다.</p></article><article class="docs-card"><h3>전송 전 확인</h3><p>관리 화면, Popup, URL Probe에서 현재 값과 최종 Cookie 헤더를 확인합니다.</p></article></div></section><section class="docs-callout"><h2>명확하게 유지하는 경계</h2><ul><li>활성 프로필, 설정된 대상 오리진, 제외되지 않은 경로만 대상으로 합니다.</li><li>Cookie 속성의 브라우저 전송 조건은 재현하지 않고 Target Origin과 Excluded Path로 범위를 정합니다.</li><li>Cookie 값과 원본 Set-Cookie 문자열을 감사 로그나 분석 이벤트에 기록하지 않습니다.</li><li>변환할 수 없는 기존 Cookie 헤더 설정은 마이그레이션 문제로 보존합니다.</li></ul></section><div class="actions"><a class="button primary" href="https://chromewebstore.google.com/detail/olmfkdclaloaacojbgaabokehlbphilf">Header Relay</a><a class="button secondary" href="/header-relay/ko/cookie/faq">Cookie FAQ 읽기</a><a class="button secondary" href="/header-relay/ko/changelogs">전체 업데이트 내역 보기</a></div></article></main><footer class="footer"><div class="container footer-inner"><span>© 2026 <a href="https://hsb.horse">hsb.horse</a></span><div class="footer-links"><a class="footer-link" href="https://chromewebstore.google.com/detail/olmfkdclaloaacojbgaabokehlbphilf">Chrome에 추가</a><a class="footer-link" href="/header-relay/ko/cookie">Cookie</a><a class="footer-link" href="/header-relay/ko/cookie/faq">FAQ</a><a class="footer-link" href="/header-relay/ko/changelogs">변경 내역</a><a class="footer-link" href="/header-relay/ko/privacy">개인정보</a><button class="footer-link footer-button" type="button" data-analytics-settings hidden>웹 분석 설정</button></div></div></footer></div><aside class="analytics-consent" data-analytics-consent aria-labelledby="analytics-consent-title" hidden><div><h2 id="analytics-consent-title">사이트 개선을 위한 웹 분석</h2><p>동의한 경우에만 이 문서 사이트에서 Google Analytics 4로 페이지 조회와 집계된 이용 현황을 측정합니다. Header Relay 확장 프로그램은 GA4로 데이터를 전송하지 않습니다. <a href="/header-relay/ko/privacy">자세한 내용은 개인정보처리방침을 확인하세요.</a></p></div><div class="analytics-consent-actions"><button class="button secondary" type="button" data-analytics-reject>거부</button><button class="button primary" type="button" data-analytics-accept>웹 분석 허용</button></div></aside><script>(function(){const measurementId = "G-YHSC0RQBQ4";
+const analyticsConsentStorageKey = "header-relay:analytics-consent";
+const analyticsCookiePath = "/header-relay";
+
+                (() => {
+                    const banner = document.querySelector(
+                        "[data-analytics-consent]",
+                    );
+                    const acceptButton = document.querySelector(
+                        "[data-analytics-accept]",
+                    );
+                    const rejectButton = document.querySelector(
+                        "[data-analytics-reject]",
+                    );
+                    const settingsButtons = document.querySelectorAll(
+                        "[data-analytics-settings]",
+                    );
+
+                    const readConsent = () => {
+                        try {
+                            return localStorage.getItem(
+                                analyticsConsentStorageKey,
+                            );
+                        } catch {
+                            return null;
+                        }
+                    };
+                    const writeConsent = (value) => {
+                        try {
+                            localStorage.setItem(
+                                analyticsConsentStorageKey,
+                                value,
+                            );
+                        } catch {
+                            // The choice applies to this page when storage is unavailable.
+                        }
+                    };
+                    const clearConsent = () => {
+                        try {
+                            localStorage.removeItem(
+                                analyticsConsentStorageKey,
+                            );
+                        } catch {
+                            // Reloading still returns to the consent prompt.
+                        }
+                    };
+                    const clearAnalyticsCookies = () => {
+                        document.cookie.split(";").forEach((cookie) => {
+                            const name = cookie.split("=")[0]?.trim();
+                            if (name === "hr_ga" || name?.startsWith("hr_ga_")) {
+                                document.cookie = `${name}=; Max-Age=0; Path=${analyticsCookiePath}; SameSite=Lax`;
+                            }
+                        });
+                    };
+
+                    window.dataLayer = window.dataLayer || [];
+                    window.gtag =
+                        window.gtag ||
+                        function () {
+                            window.dataLayer.push(arguments);
+                        };
+
+                    const initialConsent = readConsent();
+                    window.gtag("consent", "default", {
+                        ad_storage: "denied",
+                        ad_user_data: "denied",
+                        ad_personalization: "denied",
+                        analytics_storage:
+                            initialConsent === "granted"
+                                ? "granted"
+                                : "denied",
+                    });
+
+                    let analyticsEnabled = false;
+                    const enableAnalytics = () => {
+                        if (analyticsEnabled) return;
+                        analyticsEnabled = true;
+
+                        window.gtag("consent", "update", {
+                            analytics_storage: "granted",
+                        });
+                        const script = document.createElement("script");
+                        script.async = true;
+                        script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+                        document.head.append(script);
+                        window.gtag("js", new Date());
+                        window.gtag("config", measurementId, {
+                            allow_google_signals: false,
+                            allow_ad_personalization_signals: false,
+                            cookie_domain: "none",
+                            cookie_path: analyticsCookiePath,
+                            cookie_prefix: "hr",
+                        });
+                    };
+
+                    settingsButtons.forEach((button) => {
+                        button.hidden = false;
+                        button.addEventListener("click", () => {
+                            clearConsent();
+                            clearAnalyticsCookies();
+                            window.location.reload();
+                        });
+                    });
+
+                    acceptButton?.addEventListener("click", () => {
+                        writeConsent("granted");
+                        banner.hidden = true;
+                        enableAnalytics();
+                    });
+                    rejectButton?.addEventListener("click", () => {
+                        writeConsent("denied");
+                        clearAnalyticsCookies();
+                        banner.hidden = true;
+                    });
+
+                    if (initialConsent === "granted") {
+                        enableAnalytics();
+                    } else if (initialConsent !== "denied") {
+                        banner.hidden = false;
+                    }
+                })();
+            })();</script></body></html>
