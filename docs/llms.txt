@@ -1,12 +1,11 @@
 # Header Relay
 
-> Header Relay is an open-source Chrome extension for API development and testing. It captures selected response headers and relays fixed or captured values to later browser requests for developer-configured target origins.
+> Header Relay is a Chrome extension for API development and testing. It captures selected response headers and relays fixed or captured values to later browser requests for developer-configured target origins.
 
 ## Official links
 
 - Website: https://hsblabs.github.io/header-relay/
 - Chrome Web Store: https://chromewebstore.google.com/detail/olmfkdclaloaacojbgaabokehlbphilf
-- Source code: https://github.com/mktbsh/webext-header-emulator
 - Privacy policy: https://hsblabs.github.io/header-relay/privacy
 - Cookie feature announcement: https://hsblabs.github.io/header-relay/cookie
 - Cookie FAQ: https://hsblabs.github.io/header-relay/cookie/faq
